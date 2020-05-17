@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="firstSuite">
-    <parameter name="browser" value="chrome"/>
-    <test name="firstTest">
-        <classes>
-            <class name="main.java.Tests.Test_Task2"></class>
-        </classes>
-    </test>
-</suite>
