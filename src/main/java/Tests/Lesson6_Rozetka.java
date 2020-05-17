@@ -28,7 +28,8 @@ public class Lesson6_Rozetka {
         Thread.sleep(3000);
         String number = driver.findElement(By.cssSelector("span.link-dashed")).getText();
         String numberclear = number.replaceAll("[(|)|-]","");
-        System.out.println("<" + numberclear + ">");
+        String nospaces = numberclear.replace(" ", "");
+        System.out.println("<" + nospaces + ">");
         driver.quit();
     }
 }
