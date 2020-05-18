@@ -30,6 +30,6 @@ public class Lesson6_Rozetka {
         String numberclear = number.replaceAll("[(|)|-]","");
         String nospaces = numberclear.replace(" ", "");
         System.out.println("<" + nospaces + ">");
-        driver.quit();
+       // driver.quit();
     }
 }
