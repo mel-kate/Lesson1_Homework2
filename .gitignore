@@ -3,3 +3,4 @@
 target
 *.exe
 *.dmg
+chromedriver
