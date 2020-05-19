@@ -87,10 +87,8 @@ public class Lesson7_Rozetka_Test2 {
 
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(contacts)));
         String cssvaluecontacts = searchEl5.getCssValue("border-color");
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(contacts)));
+        ExpectedConditions.attributeToBe(contacts, "border-color", "rgb(248, 65, 71)");
         System.out.println(cssvaluecontacts);
-        String checkcolor = "rgb(232, 115, 119)|rgb(246, 73, 78)|rgb(238, 97, 102)";
-        assertTrue(cssvaluecontacts.contains(checkcolor));
         System.out.println("checked color");
 
 

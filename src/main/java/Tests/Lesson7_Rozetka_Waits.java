@@ -82,27 +82,13 @@ public class Lesson7_Rozetka_Waits {
 
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(contacts)));
         String cssvaluecontacts = searchEl5.getCssValue("border-color");
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(contacts)));
+        ExpectedConditions.attributeToBe(contacts, "border-color", "rgb(248, 65, 71)");
         System.out.println(cssvaluecontacts);
-        String checkcolor = "rgb(232, 115, 119)|rgb(246, 73, 78)|rgb(238, 97, 102)";
-        assertTrue(cssvaluecontacts.contains(checkcolor));
         System.out.println("checked color");
-
-
-
-
-       /* String actual = driver.getCurrentUrl();
-        String expected = "/#search_text=" + searchStr.toLowerCase();
-        assertTrue(actual.contains(expected),
-                String.format("Expected '%s' to contain '%s'", actual, expected));*/
-
-        //driver.findElement(logo).click();
-        //new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.presenceOfElementLocated(iPhone)));
-        //new WebDriverWait(driver, 10).until(ExpectedConditions.stalenessOf(driver.findElement(iPhone)));
     }
 
     @AfterMethod
     public void afterMethod() {
-      //  driver.quit();
+        driver.quit();
     }
 }
