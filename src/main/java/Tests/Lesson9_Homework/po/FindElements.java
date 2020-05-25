@@ -15,7 +15,6 @@ public class FindElements {
     private List<WebElement> source;
     List<String> a;
     private String searchStr;
-
     private final By titles = By.cssSelector("a.goods-tile__heading");
 
 
@@ -34,5 +33,6 @@ public class FindElements {
         }
         return a;
     }
+
 
 }
