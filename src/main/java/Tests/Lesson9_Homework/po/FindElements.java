@@ -1,5 +1,7 @@
 package main.java.Tests.Lesson9_Homework.po;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,15 +18,18 @@ public class FindElements {
     List<String> a;
     private String searchStr;
     private final By titles = By.cssSelector("a.goods-tile__heading");
+    Logger logger = LogManager.getLogger(MainFindElements.class);
 
 
     public FindElements(WebDriver driver) {
+        logger.trace("FindElements initialization");
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 10);
         a = new ArrayList<>();
     }
 
     public List<String> getArray() {
+        logger.info("Get elements on the page");
         wait.until(ExpectedConditions.visibilityOfElementLocated(titles));
         source= driver.findElements(titles);
         for (int i = 0; i < source.size(); i++) {

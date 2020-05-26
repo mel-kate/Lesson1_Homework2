@@ -1,5 +1,7 @@
 package main.java.Tests.Lesson9_Homework.po;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,9 +20,11 @@ public class MainFindElements {
     private String searchStr;
     private final By titles = By.cssSelector("a.menu-categories__link");
     private final By button = By.cssSelector("button.menu-toggler");
+    Logger logger = LogManager.getLogger(MainFindElements.class);
 
 
     public MainFindElements(WebDriver driver) {
+        logger.trace("MainFindElements initialization");
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 10);
         a = new ArrayList<>();
@@ -31,7 +35,7 @@ public class MainFindElements {
         searchEl3 = driver.findElement(button);
         wait.until(ExpectedConditions.elementToBeClickable(searchEl3));
         searchEl3.click();
-
+        logger.info("Menu array finding ");
         wait.until(ExpectedConditions.visibilityOfElementLocated(titles));
         source= driver.findElements(titles);
         for (int i = 0; i < source.size(); i++) {
@@ -42,6 +46,7 @@ public class MainFindElements {
     }
 
     public String[] massive() {
+        logger.warn("Huge massive");
         String[] exparray = new String[]{"Ноутбуки и компьютеры",
                 "Смартфоны, ТВ и электроника",
                 "Бытовая техника",

@@ -4,3 +4,4 @@ target
 *.exe
 *.dmg
 chromedriver
+logs/

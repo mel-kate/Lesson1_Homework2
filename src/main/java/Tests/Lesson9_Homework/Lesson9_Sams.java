@@ -34,7 +34,7 @@ public class Lesson9_Sams extends Test_Setup {
         menuCheck = mainfindelements.getArray();
         exparraycheck = mainfindelements.massive();
         assertEquals(menuCheck.size(),exparraycheck.length);
-        System.out.println("Size checked actual size: " + menuCheck.size() + " size expected: " + exparraycheck.length);
+        System.out.println("Size checked. actual size: " + menuCheck.size() + " size expected: " + exparraycheck.length);
         assertEquals(menuCheck.toString(),Arrays.asList(exparraycheck).toString());
 
 

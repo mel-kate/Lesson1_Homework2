@@ -1,5 +1,7 @@
 package main.java.Tests.Lesson9_Homework.po;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +15,7 @@ public class HomePage {
     private final WebDriver driver;
     private final WebDriverWait wait;
     private String searchStr;
-
+    Logger logger = LogManager.getLogger(MainFindElements.class);
     String popupStrSelect = "[class='popup-css lang-switcher-popup sprite-side']";
     By logo = By.cssSelector("[class='header__logo']");
     By search = By.cssSelector("[name='search']");
@@ -25,17 +27,21 @@ public class HomePage {
 
 
     public HomePage(WebDriver driver) {
+        logger.trace("HomePage initialization");
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 15);
 
     }
 
     public HomePage open() {
+        logger.info("Site opened");
         driver.get("https://rozetka.com.ua/");
+        logger.debug("URL: " + driver.getCurrentUrl());
         return this;
     }
 
     public HomePage search(String searchStr) {
+        logger.info("Searched on home page by " + searchStr);
         this.searchStr = searchStr;
         WebElement searchEl = driver.findElement(search);
         wait.until(ExpectedConditions.elementToBeClickable(searchEl));
@@ -46,7 +52,7 @@ public class HomePage {
         searchEl.click();
         searchEl.sendKeys(this.searchStr);
         searchEl.sendKeys(Keys.ENTER);
-        System.out.println("Page opened");
+        logger.info("Searched page opened");
         return this;
     }
 
