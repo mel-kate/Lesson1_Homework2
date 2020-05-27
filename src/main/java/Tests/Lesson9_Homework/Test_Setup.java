@@ -25,7 +25,7 @@ public class Test_Setup {
 
     @AfterMethod
     public void afterMethod(ITestResult result) {
-        screenshot.getScreenshot();
+        screenshot.getScreenshot(result);
         driver.quit();
     }
 }
