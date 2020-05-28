@@ -8,12 +8,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Artefacts_po {
     private final WebDriver driver;
     private final WebDriverWait wait;
-    private final By titles = By.cssSelector("a.goods-tile__heading");
+    private final By titles = By.cssSelector("span.goods-tile__title");
     private List<WebElement> source;
     List<String> a;
     Logger logger = LogManager.getLogger(MainFindElements.class);
@@ -24,6 +25,7 @@ public class Artefacts_po {
         logger.trace("Laptops site initialization");
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 15);
+        a = new ArrayList<>();
 
     }
 
@@ -34,7 +36,29 @@ public class Artefacts_po {
         return this;
     }
 
-    public void checklist(String operator) {
+    public Artefacts_po checkUrl(String name){
+        logger.info("Checklist marked");
+        driver.get("https://rozetka.com.ua/notebooks/c80004/preset=workteaching;producer="+ name.toLowerCase() + "/");
+        logger.debug("URL: " + driver.getCurrentUrl());
+        return this;
+    }
+
+    public int[] sizecheck(List<String> check,String name){
+        int size = check.size();
+        logger.info("The elements on the page are: " + check.size());
+        int elementsCount = 0;
+        for (int i = 0; i < check.size(); i++) {
+            if (check.get(i).contains(name)) elementsCount++;
+        }
+        logger.info("The elements on the page are: " + elementsCount);
+        int[] ret = new int[2];
+        ret[0] = size;
+        ret[1] = elementsCount;
+        return ret;
+
+    }
+
+    /*public void checklist(String operator) {
 
        By checkbox = By.id(operator);
         WebElement checkbox1;
@@ -43,15 +67,16 @@ public class Artefacts_po {
         wait.until(ExpectedConditions.elementToBeClickable(checkbox1));
         checkbox1.click();
         logger.info("Wait for checkbox click");
-    }
+    }*/
 
     public List<String> getArray() {
         logger.info("Get elements on the page");
         wait.until(ExpectedConditions.visibilityOfElementLocated(titles));
-        source= driver.findElements(titles);
-        for (int i = 0; i < source.size(); i++) {
-            a.add(source.get(i).getText());
-            //System.out.println(source.get(i).getText());
+        source = driver.findElements(titles);
+        logger.info("Get elements on the page 2");
+        for (WebElement webElement : source) {
+            a.add(webElement.getText());
+            //System.out.println(webElement.getText());
         }
         return a;
     }
