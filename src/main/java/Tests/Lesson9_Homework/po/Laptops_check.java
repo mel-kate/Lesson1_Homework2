@@ -8,12 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.ITestResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Artefacts_po {
+public class Laptops_check {
     private final WebDriver driver;
     private final WebDriverWait wait;
     Screenshot screenshot;
@@ -24,7 +23,7 @@ public class Artefacts_po {
 
 
 
-    public Artefacts_po(WebDriver driver) {
+    public Laptops_check(WebDriver driver) {
         logger.trace("Laptops site initialization");
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 15);
@@ -33,14 +32,14 @@ public class Artefacts_po {
 
     }
 
-    public Artefacts_po open() {
+    public Laptops_check open() {
         logger.info("Site opened");
         driver.get("https://rozetka.com.ua/notebooks/c80004/preset=workteaching/");
         logger.debug("URL: " + driver.getCurrentUrl());
         return this;
     }
 
-    public Artefacts_po checkUrl(String name){
+    public Laptops_check checkUrl(String name){
         logger.info("Checklist marked");
         driver.get("https://rozetka.com.ua/notebooks/c80004/preset=workteaching;producer="+ name.toLowerCase() + "/");
         logger.debug("URL: " + driver.getCurrentUrl());

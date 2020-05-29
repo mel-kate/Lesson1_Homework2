@@ -1,6 +1,6 @@
 package main.java.Tests.Lesson9_Homework;
 
-import main.java.Tests.Lesson9_Homework.po.Artefacts_po;
+import main.java.Tests.Lesson9_Homework.po.Laptops_check;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeMethod;
@@ -12,25 +12,27 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 
 public class Artefacts_Homework extends Test_Setup{
-    Artefacts_po artefacts_po;
-    Logger logger = LogManager.getLogger(Artefacts_po.class);
+    Laptops_check laptops_check;
+    Logger logger = LogManager.getLogger(Laptops_check.class);
 
     @BeforeMethod
     public void initialize() {
-        artefacts_po  = new Artefacts_po(driver);
+        laptops_check = new Laptops_check(driver);
     }
 
     @Test(dataProvider = "producers")
     public void LaptopsTest(String producer) {
-        artefacts_po.open();
-        artefacts_po.checkUrl(producer);
-        List<String> check = artefacts_po.getArray();
-        int[] arrayCheck = artefacts_po.sizecheck(check,producer);
+        laptops_check.open();
+        laptops_check.checkUrl(producer);
+        List<String> check = laptops_check.getArray();
+        int[] arrayCheck = laptops_check.sizecheck(check,producer);
         int check1 = arrayCheck[0];
         int check2 = arrayCheck[1];
         if (check1!=check2) {
             logger.error("Check the amount of the elements on the page! Checklist = " + producer);
         }
+        assertEquals(check1, check2);
+
 
 
 

@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="First_suite" parallel="methods" thread-count="2">
+    <test name="First_test">
+        <classes>
+            <class name="main.java.Tests.Lesson9_Homework.Lesson8_Samsung"/>
+            <class name="main.java.Tests.Lesson9_Homework.Lesson9_Sams"/>
+        </classes>
+    </test>
+</suite>
